@@ -72,3 +72,16 @@
     update();
   });
 })();
+
+/* E-post: adressen står ikke i klartekst i HTML-en, men settes sammen når siden åpnes */
+(function () {
+  function setup() {
+    var links = document.querySelectorAll('a[data-mail-u]');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      a.href = 'mailto:' + a.getAttribute('data-mail-u') + '@' + a.getAttribute('data-mail-d');
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setup);
+  else setup();
+})();
