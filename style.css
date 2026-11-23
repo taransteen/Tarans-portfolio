@@ -107,7 +107,7 @@ a { color: inherit; }
   font-weight: 500;
   color: var(--ink-soft);
   text-decoration: none;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid transparent;
 }
 
 .nav a:hover { color: var(--ink); }
@@ -482,7 +482,7 @@ figcaption { font-size: 1rem; margin-top: 16px; }
 }
 
 /* Priser – liten infoblokk på forsiden */
-.awards { margin-top: clamp(28px, 4vw, 44px); padding: clamp(20px, 3vw, 32px); background: var(--tint); border-radius: 0; border-left: 4px solid var(--accent); max-width: var(--read); }
+.awards { margin-top: clamp(28px, 4vw, 44px); padding: clamp(20px, 3vw, 32px); background: var(--tint); border-radius: 0; max-width: var(--read); }
 .awards h3 { margin: 0 0 6px; font-family: Inter, system-ui, sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
 .awards .awards-intro { margin: 0 0 18px; font-size: 1rem; line-height: 1.5; color: var(--ink-soft); }
 .awards ul { list-style: none; margin: 0; padding: 0; }
@@ -498,8 +498,8 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.025em; }
 .facts { border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
 .facts dt { color: var(--accent); }
 .eyebrow { color: var(--accent); }
-a { text-decoration-thickness: 2px; text-underline-offset: 0.18em; }
-.nav a[aria-current="page"] { border-bottom-width: 3px; }
+a { text-decoration-thickness: 1.5px; text-underline-offset: 0.18em; }
+
 
 /* Kraftigere tekstfarge i ingresser */
 .about .lead { color: var(--ink); }
@@ -526,3 +526,22 @@ a { text-decoration-thickness: 2px; text-underline-offset: 0.18em; }
   .work-list .thumb { grid-row: 1 / span 2; }
   .work-list .meta { grid-column: 2; }
 }
+
+/* ---------- Lenker: understreking 1.5px, byttes ved hover ---------- */
+a, .work-list .title {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+}
+/* Understreket som standard -> ingen understreking ved hover/fokus */
+a:hover, a:focus-visible,
+.work-list a:hover .title, .work-list a:focus-visible .title {
+  text-decoration-line: none;
+}
+/* Ikke understreket som standard -> understreking ved hover/fokus */
+.brand, .pager a, .nav a { text-decoration-line: none; }
+.brand:hover, .brand:focus-visible,
+.pager a:hover, .pager a:focus-visible { text-decoration-line: underline; text-decoration-thickness: 1.5px; text-underline-offset: 0.18em; }
+.nav a { border-bottom: 1.5px solid transparent; }
+.nav a:hover, .nav a:focus-visible { text-decoration-line: none; border-bottom-color: currentColor; }
+.nav a[aria-current="page"] { border-bottom-color: var(--accent); }
